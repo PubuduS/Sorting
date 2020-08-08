@@ -9,6 +9,7 @@
 *** IN/OUT ARGS : NONE                                            ***
 *** RETURN      : NONE                                            ***
 ********************************************************************/
+
 Sorting :: Sorting()
 {
     //To be implemented
@@ -24,6 +25,7 @@ Sorting :: Sorting()
 *** IN/OUT ARGS : NONE                                            ***
 *** RETURN      : NONE                                            ***
 ********************************************************************/
+
 Sorting :: ~Sorting()
 {
     //To be implemented
@@ -34,50 +36,16 @@ Sorting :: ~Sorting()
 *** FUNCTION <SwapElements()> const                               ***
 *********************************************************************
 *** DESCRIPTION : Swap the n and n+1 elements.   .                ***
-*** INPUT ARGS  : int* first, int* second                         ***
+*** INPUT ARGS  : class T1, class T2                              ***
 *** OUTPUT ARGS : NONE                                            ***
 *** IN/OUT ARGS : NONE                                            ***
 *** RETURN      : NONE                                            ***
 ********************************************************************/
-void Sorting :: SwapElements(int* first, int* second) const
+
+template <class T1, class T2>
+void Sorting :: SwapElements(T1 first, T2 second)const
 {
-    int temp = *first;
-    *first = *second;
-    *second = temp;
-
-    return;
-}
-
-/********************************************************************
-*** FUNCTION <SwapElements()> const (Overloaded)                  ***
-*********************************************************************
-*** DESCRIPTION : Swap the n and n+1 elements.   .                ***
-*** INPUT ARGS  : float* first, float* second                     ***
-*** OUTPUT ARGS : NONE                                            ***
-*** IN/OUT ARGS : NONE                                            ***
-*** RETURN      : NONE                                            ***
-********************************************************************/
-void Sorting :: SwapElements(float* first, float* second) const
-{
-    float temp = *first;
-    *first = *second;
-    *second = temp;
-
-    return;
-}
-
-/********************************************************************
-*** FUNCTION <SwapElements()> const (Overloaded)                  ***
-*********************************************************************
-*** DESCRIPTION : Swap the n and n+1 elements.   .                ***
-*** INPUT ARGS  : double* first, double* second                   ***
-*** OUTPUT ARGS : NONE                                            ***
-*** IN/OUT ARGS : NONE                                            ***
-*** RETURN      : NONE                                            ***
-********************************************************************/
-void Sorting :: SwapElements(double* first, double* second) const
-{
-    double temp = *first;
+    auto temp = *first;
     *first = *second;
     *second = temp;
 
@@ -89,12 +57,14 @@ void Sorting :: SwapElements(double* first, double* second) const
 *********************************************************************
 *** DESCRIPTION : Use bubble sort algorithm to arrange numbers    ***
 ***               in ascending order.                             ***
-*** INPUT ARGS  : int* pArray, const int length, const bool       ***
+*** INPUT ARGS  : T, const int, const bool = true                 ***
 *** OUTPUT ARGS : void                                            ***
 *** IN/OUT ARGS : NONE                                            ***
 *** RETURN      : NONE                                            ***
 ********************************************************************/
-void Sorting :: BubbleSort(int* pArray, const int length, const bool ascending = true)
+
+template <class T>
+void Sorting :: BubbleSort(T pNumArray, const int length, const bool ascending)
 {
     //Best Case Time Complexity O(n)
     //Average Case Time Complexity O(n^2)
@@ -117,90 +87,16 @@ void Sorting :: BubbleSort(int* pArray, const int length, const bool ascending =
         {
             if(ascending)
             {
-                if( pArray[index] > pArray[index+1] )
+                if( pNumArray[index] > pNumArray[index+1] )
                 {
-                    SwapElements( &pArray[index], &pArray[index+1] );
+                    SwapElements( &pNumArray[index], &pNumArray[index+1] );
                 }
             }
             else
             {
-                if( pArray[index] < pArray[index+1] )
+                if( pNumArray[index] < pNumArray[index+1] )
                 {
-                    SwapElements( &pArray[index], &pArray[index+1] );
-                }
-            }
-
-        }
-    }
-
-    return;
-}
-
-/********************************************************************
-*** FUNCTION <BubbleSort()> (Overloaded)                          ***
-*********************************************************************
-*** DESCRIPTION : Use bubble sort algorithm to arrange numbers    ***
-***               in ascending order.                             ***
-*** INPUT ARGS  : float* pArray, const int length, const bool     ***
-*** OUTPUT ARGS : void                                            ***
-*** IN/OUT ARGS : NONE                                            ***
-*** RETURN      : NONE                                            ***
-********************************************************************/
-void Sorting :: BubbleSort(float* pArray, const int length, const bool ascending = true)
-{
-    for(int step = 0; step < (length -1); step++)
-    {
-        for(int index = 0; index < (length -step -1); index++)
-        {
-            if(ascending)
-            {
-                if( pArray[index] > pArray[index+1] )
-                {
-                    SwapElements( &pArray[index], &pArray[index+1] );
-                }
-            }
-            else
-            {
-                if( pArray[index] < pArray[index+1] )
-                {
-                    SwapElements( &pArray[index], &pArray[index+1] );
-                }
-            }
-
-        }
-    }
-
-    return;
-}
-
-/********************************************************************
-*** FUNCTION <BubbleSort()> (Overloaded)                          ***
-*********************************************************************
-*** DESCRIPTION : Use bubble sort algorithm to arrange numbers    ***
-***               in ascending order.                             ***
-*** INPUT ARGS  : double* pArray, const int length, const bool    ***
-*** OUTPUT ARGS : void                                            ***
-*** IN/OUT ARGS : NONE                                            ***
-*** RETURN      : NONE                                            ***
-********************************************************************/
-void Sorting :: BubbleSort(double* pArray, const int length, const bool ascending = true)
-{
-    for(int step = 0; step < (length -1); step++)
-    {
-        for(int index = 0; index < (length -step -1); index++)
-        {
-            if(ascending)
-            {
-                if( pArray[index] > pArray[index+1] )
-                {
-                    SwapElements( &pArray[index], &pArray[index+1] );
-                }
-            }
-            else
-            {
-                if( pArray[index] < pArray[index+1] )
-                {
-                    SwapElements( &pArray[index], &pArray[index+1] );
+                    SwapElements( &pNumArray[index], &pNumArray[index+1] );
                 }
             }
 
@@ -215,12 +111,14 @@ void Sorting :: BubbleSort(double* pArray, const int length, const bool ascendin
 *********************************************************************
 *** DESCRIPTION : Use Selection sort algorithm to arrange numbers ***
 ***               in ascending order.                             ***
-*** INPUT ARGS  : int*, const int, const bool                     ***
+*** INPUT ARGS  : T, const int, const bool = true                 ***
 *** OUTPUT ARGS : void                                            ***
 *** IN/OUT ARGS : NONE                                            ***
 *** RETURN      : NONE                                            ***
 ********************************************************************/
-void Sorting :: SelectionSort(int* NumArray, const int length, const bool ascending = true)
+
+template <class T>
+void Sorting :: SelectionSort(T pNumArray, const int length, const bool ascending)
 {
     //Worst Case Time Complexity: O(n^2)
     //Best Case Time Complexity: O(n^2)
@@ -245,14 +143,14 @@ void Sorting :: SelectionSort(int* NumArray, const int length, const bool ascend
         {
             if(ascending)
             {
-                if( NumArray[index] < NumArray[MinIndex] )
+                if( pNumArray[index] < pNumArray[MinIndex] )
                 {
                     MinIndex = index;
                 }
             }
             else
             {
-                if( NumArray[index] > NumArray[MaxIndex] )
+                if( pNumArray[index] > pNumArray[MaxIndex] )
                 {
                     MaxIndex = index;
                 }
@@ -261,109 +159,14 @@ void Sorting :: SelectionSort(int* NumArray, const int length, const bool ascend
 
         if(ascending)
         {
-            SwapElements( &NumArray[MinIndex], &NumArray[step] );
+            SwapElements( &pNumArray[MinIndex], &pNumArray[step] );
         }
         else
         {
-            SwapElements( &NumArray[MaxIndex], &NumArray[step] );
+            SwapElements( &pNumArray[MaxIndex], &pNumArray[step] );
         }
 
     }
 
-}
-
-/********************************************************************
-*** FUNCTION <SelectionSort()> (Overloaded)                       ***
-*********************************************************************
-*** DESCRIPTION : Use Selection sort algorithm to arrange numbers ***
-***               in ascending order.                             ***
-*** INPUT ARGS  : float*, const int, const bool                   ***
-*** OUTPUT ARGS : void                                            ***
-*** IN/OUT ARGS : NONE                                            ***
-*** RETURN      : NONE                                            ***
-********************************************************************/
-void Sorting :: SelectionSort(float* NumArray, const int length, const bool ascending = true)
-{
-    for(int step = 0; step < (length - 1); step++)
-    {
-        int MinIndex = step;
-        int MaxIndex = step;
-
-        for(int index = (step + 1); index < length; index++)
-        {
-            if(ascending)
-            {
-                if(NumArray[index] < NumArray[MinIndex])
-                {
-                    MinIndex = index;
-                }
-            }
-            else
-            {
-                if(NumArray[index] > NumArray[MaxIndex])
-                {
-                    MaxIndex = index;
-                }
-            }
-        }
-
-        if(ascending)
-        {
-            SwapElements(&NumArray[MinIndex], &NumArray[step]);
-        }
-        else
-        {
-            SwapElements(&NumArray[MaxIndex], &NumArray[step]);
-        }
-
-    }
-
-}
-
-/********************************************************************
-*** FUNCTION <SelectionSort()> (Overloaded)                       ***
-*********************************************************************
-*** DESCRIPTION : Use Selection sort algorithm to arrange numbers ***
-***               in ascending order.                             ***
-*** INPUT ARGS  : double*, const int, const bool                  ***
-*** OUTPUT ARGS : void                                            ***
-*** IN/OUT ARGS : NONE                                            ***
-*** RETURN      : NONE                                            ***
-********************************************************************/
-void Sorting :: SelectionSort(double* NumArray, const int length, const bool ascending = true)
-{
-    for(int step = 0; step < (length - 1); step++)
-    {
-        int MinIndex = step;
-        int MaxIndex = step;
-
-        for(int index = (step + 1); index < length; index++)
-        {
-            if(ascending)
-            {
-                if(NumArray[index] < NumArray[MinIndex])
-                {
-                    MinIndex = index;
-                }
-            }
-            else
-            {
-                if(NumArray[index] > NumArray[MaxIndex])
-                {
-                    MaxIndex = index;
-                }
-            }
-        }
-
-        if(ascending)
-        {
-            SwapElements(&NumArray[MinIndex], &NumArray[step]);
-        }
-        else
-        {
-            SwapElements(&NumArray[MaxIndex], &NumArray[step]);
-        }
-
-    }
-
+    return;
 }
