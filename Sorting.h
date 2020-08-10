@@ -57,6 +57,8 @@ public:
     template <class T>
     void SelectionSort(T pNumArray, const int length, const bool ascending = true);
 
+
+
 private:
 
 /********************************************************************
@@ -70,8 +72,9 @@ private:
 ********************************************************************/
 
     template <class T1, class T2>
-    void SwapElements(T1  , T2 )const;
+    void SwapElements(T1  , T2 );
 
 
 };
+
 #endif

@@ -1,4 +1,4 @@
-#include "sorting.h"
+#include "Sorting.h"
 
 /********************************************************************
 *** FUNCTION <Sorting()> Default Constructor                      ***
@@ -43,7 +43,7 @@ Sorting :: ~Sorting()
 ********************************************************************/
 
 template <class T1, class T2>
-void Sorting :: SwapElements(T1 first, T2 second)const
+void Sorting :: SwapElements(T1 first, T2 second)
 {
     auto temp = *first;
     *first = *second;
@@ -51,6 +51,12 @@ void Sorting :: SwapElements(T1 first, T2 second)const
 
     return;
 }
+
+// This is done to avoid linking error. Please refer here for more details.
+// https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
+template void Sorting :: SwapElements<int*, int*>(int*, int*);
+template void Sorting :: SwapElements<float*, float*>(float*, float*);
+template void Sorting :: SwapElements<double*, double*>(double*, double*);
 
 /********************************************************************
 *** FUNCTION <BubbleSort()>                                       ***
@@ -105,6 +111,12 @@ void Sorting :: BubbleSort(T pNumArray, const int length, const bool ascending)
 
     return;
 }
+
+// This is done to avoid linking error. Please refer here for more details.
+// https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
+template void Sorting :: BubbleSort<int*>(int*, const int, const bool);
+template void Sorting :: BubbleSort<float*>(float*, const int, const bool);
+template void Sorting :: BubbleSort<double*>(double*, const int, const bool);
 
 /********************************************************************
 *** FUNCTION <SelectionSort()>                                    ***
@@ -170,3 +182,9 @@ void Sorting :: SelectionSort(T pNumArray, const int length, const bool ascendin
 
     return;
 }
+
+// This is done to avoid linking error. Please refer here for more details.
+// https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
+template void Sorting :: SelectionSort<int*>(int*, const int, const bool);
+template void Sorting :: SelectionSort<float*>(float*, const int, const bool);
+template void Sorting :: SelectionSort<double*>(double*, const int, const bool);
