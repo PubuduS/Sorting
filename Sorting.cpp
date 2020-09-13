@@ -188,3 +188,71 @@ void Sorting :: SelectionSort(T pNumArray, const int length, const bool ascendin
 template void Sorting :: SelectionSort<int*>(int*, const int, const bool);
 template void Sorting :: SelectionSort<float*>(float*, const int, const bool);
 template void Sorting :: SelectionSort<double*>(double*, const int, const bool);
+
+/********************************************************************
+*** FUNCTION <InsertionSort()>                                    ***
+*********************************************************************
+*** DESCRIPTION : Use Insertion sort algorithm to arrange numbers ***
+***               in ascending order.                             ***
+*** INPUT ARGS  : T, const int, const bool = true                 ***
+*** OUTPUT ARGS : void                                            ***
+*** IN/OUT ARGS : NONE                                            ***
+*** RETURN      : NONE                                            ***
+********************************************************************/
+
+template <class T>
+void Sorting :: InsertionSort(T pNumArray, const int length, const bool ascending)
+{
+    //Worst Case Time Complexity: O(n^2)
+    //Best Case Time Complexity: O(n)
+    //Average Case Time Complexity: O(n^2)
+    //Space Complexity: O(1)
+
+    /***
+    The insertionSort sort is used when:
+        (1) a small list is to be sorted
+        (2) useful when the data is nearly sorted.
+        (3) when the array is small, this is better than selection sort.
+    ***/
+
+
+    int holePosition = 0;
+
+    for(int i = 0; i < length; i++)
+    {
+        // Store the value that we need to be inserted.
+        auto valueToInsert = pNumArray[i];
+        holePosition = i;
+
+           // Mark first element as sorted. Locate hole position to the element to be inserted.
+
+           if(ascending)
+           {
+              while( (holePosition > 0) && (pNumArray[holePosition-1] > valueToInsert) )
+              {
+                 pNumArray[holePosition] = pNumArray[holePosition-1];
+                 holePosition--;
+              }
+           }
+           else
+           {
+              while( (holePosition > 0) && (pNumArray[holePosition-1] < valueToInsert) )
+              {
+                 pNumArray[holePosition] = pNumArray[holePosition-1];
+                 holePosition--;
+              }
+           }
+
+           // Put the value in correct position.
+           pNumArray[holePosition] = valueToInsert;
+    }
+
+    return;
+}
+
+// This is done to avoid linking error. Please refer here for more details.
+// https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
+template void Sorting :: InsertionSort<int*>(int*, const int, const bool);
+template void Sorting :: InsertionSort<float*>(float*, const int, const bool);
+template void Sorting :: InsertionSort<double*>(double*, const int, const bool);
+

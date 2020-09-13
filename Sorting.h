@@ -57,6 +57,20 @@ public:
     template <class T>
     void SelectionSort(T pNumArray, const int length, const bool ascending = true);
 
+/********************************************************************
+*** FUNCTION <InsertionSort()>                                    ***
+*********************************************************************
+*** DESCRIPTION : Use Insertion sort algorithm to arrange numbers ***
+***               in ascending order.                             ***
+*** INPUT ARGS  : T, const int, const bool = true                 ***
+*** OUTPUT ARGS : void                                            ***
+*** IN/OUT ARGS : NONE                                            ***
+*** RETURN      : NONE                                            ***
+********************************************************************/
+
+    template <class T>
+    void InsertionSort(T pNumArray, const int length, const bool ascending = true);
+
 
 
 private:
