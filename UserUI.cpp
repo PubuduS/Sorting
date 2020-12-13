@@ -150,12 +150,12 @@ void UserUI :: ChoosenAlgorithm( int* pNumArray, const Mode mode, const SortingM
          mySimpleVisualizer.bubbleSort( pNumArray, length );
       }
       else if( method == SELECTIONSORT )
-      {
-         //To be implemented
+      {         
+         mySimpleVisualizer.selectionSort( pNumArray, length );
       }
       else if( method == INSERTIONSORT )
-      {
-         //To be implemented
+      {         
+         mySimpleVisualizer.insertionSort( pNumArray, length );
       }
 
    } 

@@ -9,7 +9,7 @@ HeaderPath = 'include/'
 
 # Some old SCon version do not support SCONS_CXX_STANDARD. If you are run into this problem,
 # please upload scons version or use this CXXFLAGS="-std=c++0x"
-print 'Path:' + Dir('.').abspath
+print('Path:' + Dir('.').abspath)
 
 env=Environment(CPPPATH=HeaderPath,
                 CPPDEFINES=[],
