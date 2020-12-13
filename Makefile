@@ -2,12 +2,12 @@
 # In order to execute this "Makefile" just type "make"
 #
 
-OBJS	 = main.o Sorting.o
-SOURCE	 = main.cpp Sorting.cpp
-HEADER	 = Sorting.h
+OBJS	 = main.o Sorting.o SimpleVisualizer.o UserUI.o
+SOURCE	 = main.cpp Sorting.cpp SimpleVisualizer.cpp UserUI.cpp
+HEADER	 = Sorting.h CoutColor.h SimpleVisualizer.h UserUI.h
 OUT	 = sorting
 CC	 = g++
-FLAGS	 = -g -c -Wall
+FLAGS	 = -g -c -Wall -Iinclude/
 LFLAGS	 = 
 YFLAGS   =
 # LFLAGS - Extra flags for lex
@@ -27,6 +27,11 @@ main.o: main.cpp
 Sorting.o: Sorting.cpp
 	$(CC) $(FLAGS) Sorting.cpp -std=c++11
 
+SimpleVisualizer.o: SimpleVisualizer.cpp
+	$(CC) $(FLAGS) SimpleVisualizer.cpp -std=c++11
+
+UserUI.o: UserUI.cpp
+	$(CC) $(FLAGS) UserUI.cpp -std=c++11
 
 # clean up
 clean:
