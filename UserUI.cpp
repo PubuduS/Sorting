@@ -1,26 +1,26 @@
-#include "UserUI.h"
+#include "include/UserUI.h"
 
 #include <iostream>
-#include "Sorting.h"
-#include "SimpleVisualizer.h"
+#include "include/Sorting.h"
+#include "include/SimpleVisualizer.h"
 
 UserUI :: UserUI()
 {
   // Constructor
-  // Nothing to do here for now. 
+  // Nothing to do here for now.
 }
 
 UserUI :: ~UserUI()
 {
   // DeConstructor
-  // Nothing to do here for now. 
+  // Nothing to do here for now.
 }
 
 void UserUI :: DispalyUI()
 {
 
    int option = 0;
- 
+
    do
    {
       std::cout<<"Please Select an Option"<<std::endl;
@@ -32,7 +32,7 @@ void UserUI :: DispalyUI()
    }while( option <= 0 || option > 3 );
 
    DispalyAlgorithm( static_cast<Mode>(option) );
-   
+
 
 }
 
@@ -46,9 +46,10 @@ void UserUI :: DispalyAlgorithm( const Mode mode )
       std::cout<<"Press 1 for BubbleSort"<<std::endl;
       std::cout<<"Press 2 for SelectionSort"<<std::endl;
       std::cout<<"Press 3 for InsertionSort"<<std::endl;
+      std::cout<<"Press 4 for BucketSort"<<std::endl;
       std::cin >> method;
 
-   }while( method <= 0 || method > 3 );
+   }while( method <= 0 || method > 4 );
 
    ChooseAlgorithm( mode, static_cast<SortingMethod>(method) );
 
@@ -63,7 +64,7 @@ void UserUI :: ChooseAlgorithm( const Mode mode, const SortingMethod method )
 
    if( mode == VISUALIZE )
    {
-     
+
       // Create a simple unsorted Array.
       int numArray[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
       const int length = ( sizeof( numArray ) / sizeof( numArray[0] ) );
@@ -103,21 +104,21 @@ void UserUI :: ChooseAlgorithm( const Mode mode, const SortingMethod method )
       {
          int numArray[arraySize];
          PopulateArray<int*>( numArray, arraySize );
-         ChoosenAlgorithm( numArray, mode, method, arraySize, ascending );        
+         ChoosenAlgorithm( numArray, mode, method, arraySize, ascending );
       }
       else if( arrayType == 2 && arraySize > 0 )
       {
          float numArray[arraySize];
          PopulateArray<float*>( numArray, arraySize );
-         ChoosenAlgorithm( numArray, method, arraySize, ascending );      
+         ChoosenAlgorithm( numArray, method, arraySize, ascending );
       }
       else if( arrayType == 3 && arraySize > 0 )
       {
          double numArray[arraySize];
-         PopulateArray<double*>( numArray, arraySize ); 
-         ChoosenAlgorithm( numArray, method, arraySize, ascending );             
+         PopulateArray<double*>( numArray, arraySize );
+         ChoosenAlgorithm( numArray, method, arraySize, ascending );
       }
- 
+
 
    }
 
@@ -147,24 +148,28 @@ void UserUI :: ChoosenAlgorithm( int* pNumArray, const Mode mode, const SortingM
 
       if( method == BUBBLESORT )
       {
-         mySimpleVisualizer.bubbleSort( pNumArray, length );
+         mySimpleVisualizer.BubbleSort( pNumArray, length );
       }
       else if( method == SELECTIONSORT )
-      {         
-         mySimpleVisualizer.selectionSort( pNumArray, length );
+      {
+         mySimpleVisualizer.SelectionSort( pNumArray, length );
       }
       else if( method == INSERTIONSORT )
-      {         
-         mySimpleVisualizer.insertionSort( pNumArray, length );
+      {
+         mySimpleVisualizer.InsertionSort( pNumArray, length );
+      }
+      else if( method == BUCKETSORT )
+      {
+         mySimpleVisualizer.BucketSort();
       }
 
-   } 
+   }
    else if( mode == SORT )
    {
 
       if( method == BUBBLESORT )
       {
-        
+
          std::cout<<"Before Swapping"<<std::endl;
          PrintArray<int*>( pNumArray, length );
 
@@ -192,7 +197,7 @@ void UserUI :: ChoosenAlgorithm( int* pNumArray, const Mode mode, const SortingM
          MySort.InsertionSort<int*>( pNumArray, length, ascending );
 
          std::cout<<"After Swapping"<<std::endl;
-         PrintArray<int*>( pNumArray, length );         
+         PrintArray<int*>( pNumArray, length );
       }
 
    }
@@ -200,12 +205,12 @@ void UserUI :: ChoosenAlgorithm( int* pNumArray, const Mode mode, const SortingM
 }
 
 void UserUI :: ChoosenAlgorithm( float* pNumArray, const SortingMethod method, const int length, const bool ascending )
-{   
+{
    Sorting MySort;
 
       if( method == BUBBLESORT )
       {
-        
+
          std::cout<<"Before Swapping"<<std::endl;
          PrintArray<float*>( pNumArray, length );
 
@@ -233,18 +238,18 @@ void UserUI :: ChoosenAlgorithm( float* pNumArray, const SortingMethod method, c
          MySort.InsertionSort<float*>( pNumArray, length, ascending );
 
          std::cout<<"After Swapping"<<std::endl;
-         PrintArray<float*>( pNumArray, length );         
+         PrintArray<float*>( pNumArray, length );
       }
 
 }
 
 void UserUI :: ChoosenAlgorithm( double* pNumArray, const SortingMethod method, const int length, const bool ascending )
-{   
+{
    Sorting MySort;
 
       if( method == BUBBLESORT )
       {
-        
+
          std::cout<<"Before Swapping"<<std::endl;
          PrintArray<double*>( pNumArray, length );
 
@@ -272,7 +277,7 @@ void UserUI :: ChoosenAlgorithm( double* pNumArray, const SortingMethod method, 
          MySort.InsertionSort<double*>( pNumArray, length, ascending );
 
          std::cout<<"After Swapping"<<std::endl;
-         PrintArray<double*>( pNumArray, length );         
+         PrintArray<double*>( pNumArray, length );
       }
 
 }
@@ -284,9 +289,5 @@ void UserUI :: PrintArray( T pNumArray, const int length )
    {
       std::cout<<"Array index "<<index<<" is "<<pNumArray[index]<<std::endl;
    }
-  
+
 }
-
-
-
-

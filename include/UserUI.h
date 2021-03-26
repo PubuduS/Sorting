@@ -15,15 +15,16 @@ class UserUI
 
  enum SortingMethod
  {
-   BUBBLESORT = 1, 
+   BUBBLESORT = 1,
    SELECTIONSORT = 2,
-   INSERTIONSORT = 3
+   INSERTIONSORT = 3,
+   BUCKETSORT = 4
  };
 
  UserUI();
  ~UserUI();
- void DispalyUI(); 
- void DispalyAlgorithm( const Mode mode ); 
+ void DispalyUI();
+ void DispalyAlgorithm( const Mode mode );
 
 
  private:

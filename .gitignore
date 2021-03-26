@@ -1,0 +1,22 @@
+# Compiled Object files
+*.o
+
+# Ignore all text files
+*.txt
+
+# Ignore scon db
+.sconsign.dblite
+
+# Ignore all documentation
+Docs/
+
+# Ignore executable
+sorting
+
+# Ignore commit message file
+message
+
+# precompiled headers.
+*.h.gch
+
+

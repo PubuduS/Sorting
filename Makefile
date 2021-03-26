@@ -36,3 +36,4 @@ UserUI.o: UserUI.cpp
 # clean up
 clean:
 	rm -f $(OBJS) $(OUT)
+	rm -rf Docs/
